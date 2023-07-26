@@ -3,14 +3,14 @@ package system_settings
 import (
 	"time"
 
-	"github.com/go-catupiry/catu"
+	"github.com/go-bolo/bolo"
 	"github.com/gookit/event"
 	"github.com/jellydator/ttlcache/v3"
 	"github.com/sirupsen/logrus"
 )
 
 type Plugin struct {
-	catu.Pluginer
+	bolo.Pluginer
 	Name       string
 	Controller *SettingsController
 }
@@ -19,7 +19,7 @@ func (p *Plugin) GetName() string {
 	return p.Name
 }
 
-func (p *Plugin) Init(app catu.App) error {
+func (p *Plugin) Init(app bolo.App) error {
 	p.Controller = &SettingsController{
 		App: app,
 	}
@@ -35,7 +35,7 @@ func (p *Plugin) Init(app catu.App) error {
 	return nil
 }
 
-func (r *Plugin) BindRoutes(app catu.App) error {
+func (r *Plugin) BindRoutes(app bolo.App) error {
 	logrus.Debug(r.GetName() + " BindRoutes")
 
 	ctl := r.Controller

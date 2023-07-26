@@ -4,18 +4,18 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/go-catupiry/catu"
+	"github.com/go-bolo/bolo"
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"
 )
 
 type SettingsJSONResponse struct {
-	catu.BaseListReponse
+	bolo.BaseListReponse
 	Settings *[]Settings `json:"system-settings"`
 }
 
 type settingsCountJSONResponse struct {
-	catu.BaseMetaResponse
+	bolo.BaseMetaResponse
 }
 
 type SettingsFindOneJSONResponse struct {
@@ -59,12 +59,12 @@ func (b *SettingsBodyRequest) GetAllValues() map[string]string {
 
 // Http symbol controller | struct with http handlers
 type SettingsController struct {
-	App catu.App
+	App bolo.App
 }
 
 func (ctl *SettingsController) Query(c echo.Context) error {
 	var err error
-	RequestContext := c.(*catu.RequestContext)
+	RequestContext := c.(*bolo.RequestContext)
 
 	var count int64
 	var records []Settings
@@ -104,7 +104,7 @@ func (ctl *SettingsController) Query(c echo.Context) error {
 func (ctl *SettingsController) Create(c echo.Context) error {
 	logrus.Debug("SettingsController.Create running")
 	var err error
-	ctx := c.(*catu.RequestContext)
+	ctx := c.(*bolo.RequestContext)
 
 	can := ctx.Can("create_settings")
 	if !can {
@@ -146,7 +146,7 @@ func (ctl *SettingsController) Create(c echo.Context) error {
 
 func (ctl *SettingsController) Count(c echo.Context) error {
 	var err error
-	RequestContext := c.Get("ctx").(*catu.RequestContext)
+	RequestContext := c.Get("ctx").(*bolo.RequestContext)
 
 	var count int64
 	err = SettingsCountReq(&SettingsQueryOpts{
@@ -210,7 +210,7 @@ func (ctl *SettingsController) Delete(c echo.Context) error {
 		"key": key,
 	}).Debug("settings.DeleteOneHandler key from params")
 
-	RequestContext := c.Get("ctx").(*catu.RequestContext)
+	RequestContext := c.Get("ctx").(*bolo.RequestContext)
 
 	can := RequestContext.Can("delete_widget")
 	if !can {

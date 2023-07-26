@@ -3,7 +3,7 @@ package system_settings
 import (
 	"encoding/json"
 
-	"github.com/go-catupiry/catu"
+	"github.com/go-bolo/bolo"
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"
 	"gorm.io/gorm"
@@ -25,12 +25,12 @@ type SettingsQueryOpts struct {
 }
 
 func (r *Settings) Delete() error {
-	db := catu.GetDefaultDatabaseConnection()
+	db := bolo.GetDefaultDatabaseConnection()
 	return db.Unscoped().Delete(&r).Error
 }
 
 func (m *Settings) Save() error {
-	db := catu.GetDefaultDatabaseConnection()
+	db := bolo.GetDefaultDatabaseConnection()
 
 	saved := Settings{}
 	err := SettingsFindOne(m.Key, &saved)
@@ -78,7 +78,7 @@ func SettingsFindOne(key string, target *Settings) error {
 		"key": key,
 	}).Debug("FindSettingsByKey Will find by")
 
-	db := catu.GetDefaultDatabaseConnection()
+	db := bolo.GetDefaultDatabaseConnection()
 
 	if err := db.
 		Where("`key` = ? ", key).
@@ -92,7 +92,7 @@ func SettingsFindOne(key string, target *Settings) error {
 }
 
 func SettingsQueryAndCountReq(opts *SettingsQueryOpts) error {
-	db := catu.GetDefaultDatabaseConnection()
+	db := bolo.GetDefaultDatabaseConnection()
 
 	c := opts.C
 
@@ -116,7 +116,7 @@ func SettingsQueryAndCountReq(opts *SettingsQueryOpts) error {
 }
 
 func SettingsCountReq(opts *SettingsQueryOpts) error {
-	db := catu.GetDefaultDatabaseConnection()
+	db := bolo.GetDefaultDatabaseConnection()
 
 	c := opts.C
 
@@ -138,7 +138,7 @@ func SettingsCountReq(opts *SettingsQueryOpts) error {
 }
 
 func SettingsFindAll(records *[]*Settings, limit int) error {
-	db := catu.GetDefaultDatabaseConnection()
+	db := bolo.GetDefaultDatabaseConnection()
 
 	if err := db.
 		Limit(limit).
