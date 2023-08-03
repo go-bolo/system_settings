@@ -1,9 +1,9 @@
-module github.com/go-catupiry/system_settings
+module github.com/go-bolo/system_settings
 
 go 1.20
 
 require (
-	github.com/go-bolo/bolo v0.0.0-20230725002137-d5b5111c36b9
+	github.com/go-bolo/bolo v1.0.0
 	github.com/gookit/event v1.1.1
 	github.com/jellydator/ttlcache/v3 v3.0.1
 	github.com/labstack/echo/v4 v4.11.1
@@ -19,8 +19,8 @@ require (
 	github.com/cockroachdb/apd v1.1.0 // indirect
 	github.com/cuducos/go-cnpj v0.1.1 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
+	github.com/go-bolo/clock v0.0.3 // indirect
 	github.com/go-bolo/query_parser_to_db v1.0.0 // indirect
-	github.com/go-catupiry/query_parser_to_db v0.0.4 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.14.1 // indirect
@@ -47,6 +47,8 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
 	github.com/spf13/cast v1.5.1 // indirect
+	github.com/tdewolff/minify/v2 v2.12.8 // indirect
+	github.com/tdewolff/parse/v2 v2.6.7 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	golang.org/x/crypto v0.11.0 // indirect
