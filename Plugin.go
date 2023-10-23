@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/go-bolo/bolo"
+	"github.com/go-bolo/system_settings/migrations"
 	"github.com/gookit/event"
 	"github.com/jellydator/ttlcache/v3"
 	"github.com/sirupsen/logrus"
@@ -47,6 +48,12 @@ func (r *Plugin) BindRoutes(app bolo.App) error {
 	app.SetResource("system-settings-old", ctl, routerApiOld)
 
 	return nil
+}
+
+func (r *Plugin) GetMigrations() []*bolo.Migration {
+	return []*bolo.Migration{
+		migrations.Get00001Migration(),
+	}
 }
 
 type PluginCfgs struct {
