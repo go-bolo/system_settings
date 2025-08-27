@@ -44,9 +44,6 @@ func (r *Plugin) BindRoutes(app bolo.App) error {
 	routerApi := app.SetRouterGroup("system-settings-api", "/api/system-settings")
 	app.SetResource("system-settings", ctl, routerApi)
 
-	routerApiOld := app.SetRouterGroup("system-settings-api-old", "/system-settings")
-	app.SetResource("system-settings-old", ctl, routerApiOld)
-
 	return nil
 }
 
